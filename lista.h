@@ -30,8 +30,10 @@ lista criaLista(int);
 /*libera todos as alocações feitas nas posições do vetor, depois o vetor de Tindice e por fim a lista*/
 void liberaLista(lista);
 
+/*Retorna todos os elementos que não fazem parte da posição atual do vetor para suas respectivas origens*/
 void posicaoOriginal(int,lista);
 
+/*Passa o nodo de uma posição do vetor para outra posição do vetor*/
 void posicaoNova(int,int,lista);
 
 #endif // LISTA_H_INCLUDED
