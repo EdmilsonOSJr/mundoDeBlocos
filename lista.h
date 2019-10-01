@@ -36,4 +36,15 @@ void posicaoOriginal(int,lista);
 /*Passa o nodo de uma posição do vetor para outra posição do vetor*/
 void posicaoNova(int,int,lista);
 
+/*Move o bloco a para cima do bloco b retornando eventuais blocos que já estiverem
+sobre a ou b para as suas posições originais*/
+void moveOnto(int,int,lista);
+
+/*Coloca o bloco a no topo do monte onde está o bloco b retornando eventuais blocos
+que já estiverem sobre a às suas posições originais*/
+void moveOver(int,int,lista);
+
+/*IMprme td que está na lista*/
+void testeDaLista(lista,int);
+
 #endif // LISTA_H_INCLUDED

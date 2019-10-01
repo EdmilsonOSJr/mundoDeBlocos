@@ -1,13 +1,13 @@
 # depslib dependency file v1.0
-1569890829 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/main.c
+1569944632 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/main.c
 	<stdio.h>
 	<stdlib.h>
 	"lista.h"
 
-1569891394 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/lista.c
+1569948525 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/lista.c
 	<stdio.h>
 	<stdlib.h>
 	"lista.h"
 
-1569888681 /home/edmilson/Documentos/GITHUB/Trabalho2/tra2/lista.h
+1569942865 /home/edmilson/Documentos/GITHUB/Trabalho2/tra2/lista.h
 

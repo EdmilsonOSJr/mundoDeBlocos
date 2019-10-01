@@ -4,40 +4,50 @@
 
 
 int main(){
-    int i,n;
+    int n;
     lista l;
-    TNodo *in;
 
     printf("\nForneça o numero de elementos: ");
     scanf("%d",&n);
 
     l=criaLista(n);
 
-    posicaoNova(2,3,l);
-    posicaoNova(2,4,l);
+    //posicaoNova(2,3,l);
+    //posicaoNova(2,4,l);
 
-    for(i=0;i<n;i++){
 
-        in=l->vetor[i]->first;
-        printf("\n==================");
-        while(in!=NULL){
-            printf("\n%d",in->info);
-            in=in->next;
-        }
-        printf("\n==================");
-    }
+    //posicaoOriginal(2,l);
+    testeDaLista(l,n);
 
-    posicaoOriginal(2,l);
+    printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
 
-    printf("\nApos chamar original\n");
-    for(i=0;i<n;i++){
-        in=l->vetor[i]->first;
-        printf("\n==================");
-        while(in!=NULL){
-            printf("\n%d",in->info);
-            in=in->next;
-        }
-        printf("\n==================");
-    }
+    moveOnto(3,2,l);
+
+    testeDaLista(l,n);
+
+    printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+
+    moveOnto(4,3,l);
+
+    testeDaLista(l,n);
+
+    printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+
+    moveOver(5,2,l);
+
+    testeDaLista(l,n);
+
+    printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+
+    moveOver(5,4,l);
+
+    testeDaLista(l,n);
+
+    printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+
+    moveOver(5,4,l);
+
+    testeDaLista(l,n);
+
     return 0;
 }

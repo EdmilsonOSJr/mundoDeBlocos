@@ -46,29 +46,37 @@ void posicaoOriginal(int posicaoAtual,lista l){
     TNodo *p,*ant;
     int posOriginal;
 
-    posA=l->vetor[posicaoAtual];
+    if(l->vetor[posicaoAtual]->first!=NULL){
+        posA=l->vetor[posicaoAtual];
 
-    while(p->info!=posicaoAtual){
-        p=posA->first;
-        while(p!=posA->last){
+        do{
+            p=posA->first;
             ant=p;
-            p=p->next;
-        }
-        printf("\nteste: %d",posA->last->info);
-        ant->next=NULL;
-        posA->last=ant;
-        posA->nElementos--;
+            while(p!=posA->last){
+                ant=p;
+                p=p->next;
+            }
 
-        posOriginal=p->info;
+            if(p!=ant){
+            //printf("\nteste: %d",posA->last->info);
+                ant->next=NULL;
+                posA->last=ant;
+                posA->nElementos--;
 
-        posO=l->vetor[posOriginal];
+                posOriginal=p->info;
 
-        posO->first=p;
-        posO->last=p;
-        posO->nElementos++;
-        posO->last->next=NULL;
+                posO=l->vetor[posOriginal];
 
+                posO->first=p;
+                posO->last=p;
+                posO->nElementos++;
+                posO->last->next=NULL;
+            }
+
+        }while(p->info!=posicaoAtual);
     }
+    else
+        printf("\nnulo");
 }
 
 void posicaoNova(int posicaoNova,int posicaoAtual,lista l){
@@ -76,7 +84,7 @@ void posicaoNova(int posicaoNova,int posicaoAtual,lista l){
     TNodo *primeiroNodoAtual;
 
 
-    while(l->vetor[posicaoAtual]->first!=NULL){
+    while(l->vetor[posicaoAtual]->last!=NULL){
         posA=l->vetor[posicaoAtual];
 
         if(posA->first==l->vetor[posicaoAtual]->last){
@@ -85,13 +93,48 @@ void posicaoNova(int posicaoNova,int posicaoAtual,lista l){
 
         primeiroNodoAtual=posA->first;
         posA->first=primeiroNodoAtual->next;
+        posA->nElementos--;
 
         posN=l->vetor[posicaoNova];
         posN->last->next=primeiroNodoAtual;
         posN->last=primeiroNodoAtual;
         posN->last->next=NULL;
+        posN->nElementos++;
 
 
-        printf("\nUltima pos: %d",posN->last->info);
+        //printf("\nUltima pos: %d",posN->last->info);
+    }
+}
+
+void moveOnto(int a,int b,lista l){
+
+    posicaoOriginal(a,l);
+    posicaoOriginal(b,l);
+    //printf("\nTeste");
+
+    posicaoNova(a,b,l);
+}
+
+void moveOver(int a,int b,lista l){
+
+    printf("\nteste");
+    posicaoOriginal(b,l);
+    posicaoNova(a,b,l);
+
+}
+
+
+void testeDaLista(lista l,int n){
+    TNodo *in;
+    int i;
+
+    for(i=0;i<n;i++){
+        in=l->vetor[i]->first;
+        printf("\n==================");
+        while(in!=NULL){
+            printf("\n%d",in->info);
+            in=in->next;
+        }
+        printf("\n==================");
     }
 }
