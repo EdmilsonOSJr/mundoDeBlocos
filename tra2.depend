@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1569973847 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/main.c
+1569979641 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -12,20 +12,22 @@
 	<stdlib.h>
 	"lista.h"
 
-1569968306 /home/edmilson/Documentos/GITHUB/Trabalho2/tra2/lista.h
+1569979779 /home/edmilson/Documentos/GITHUB/Trabalho2/tra2/lista.h
 
 1569968312 /home/edmilson/Documentos/GITHUB/Trabalho2/tra2/movimentacaoDoBloco.h
 
-1569970526 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/movimentacaoDoBloco.c
+1569979271 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/movimentacaoDoBloco.c
 	<stdio.h>
 	<stdlib.h>
 	"lista.h"
 
-1569973982 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/arquivo.c
+1569979629 source:/home/edmilson/Documentos/GITHUB/Trabalho2/tra2/arquivo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"arquivo.h"
+	"lista.h"
+	"movimentacaoDoBloco.h"
 
-1569973934 /home/edmilson/Documentos/GITHUB/Trabalho2/tra2/arquivo.h
+1569979793 /home/edmilson/Documentos/GITHUB/Trabalho2/tra2/arquivo.h
 

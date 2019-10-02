@@ -6,15 +6,14 @@
 #include "arquivo.h"
 
 int iniciar(){
-    int n;
     lista l;
 
-    n=lerComandos();
+    //n=lerComandos();
 
-    l=criaLista(n);
-    testeDaLista(l,n);
+    l=criaLista(7);
+    //testeDaLista(l,n);
 
-    moveOnto(3,2,l);
+    /*moveOnto(3,2,l);
     testeDaLista(l,n);
 
     moveOnto(4,3,l);
@@ -30,8 +29,9 @@ int iniciar(){
     testeDaLista(l,n);
 
     moveOnto(4,2,l);
-    testeDaLista(l,n);
-
+    testeDaLista(l,n);*/
+    executarComandosDoArquivo(l);
+    //testeDaLista(l,7);
     return 0;
 }
 

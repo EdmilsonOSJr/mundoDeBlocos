@@ -44,7 +44,6 @@ void posicaoNova(int posicaoNova,int posicaoAtual,lista l){
     TIndice *posA,*posN;
     TNodo *primeiroNodoAtual;
 
-
     while(l->vetor[posicaoAtual]->last!=NULL){
         posA=l->vetor[posicaoAtual];
 
@@ -56,11 +55,19 @@ void posicaoNova(int posicaoNova,int posicaoAtual,lista l){
         posA->first=primeiroNodoAtual->next;
         posA->nElementos--;
 
-        posN=l->vetor[posicaoNova];
-        posN->last->next=primeiroNodoAtual;
-        posN->last=primeiroNodoAtual;
-        posN->last->next=NULL;
-        posN->nElementos++;
+        if(l->vetor[posicaoNova]->first==NULL){ ///Essa parte tem de ser verificada
+            posN=l->vetor[posicaoNova];
+            posN->first=primeiroNodoAtual;
+            posN->last=primeiroNodoAtual;
+            posN->last->next=NULL;
+        }
+        else{
+            posN=l->vetor[posicaoNova];
+            posN->last->next=primeiroNodoAtual;
+            posN->last=primeiroNodoAtual;
+            posN->last->next=NULL;
+            posN->nElementos++;
+        }
 
 
         //printf("\nUltima pos: %d",posN->last->info);

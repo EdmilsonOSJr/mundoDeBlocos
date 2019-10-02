@@ -22,7 +22,7 @@ typedef struct{
     int tamanho;
 }TLista;
 
-typedef TLista *lista;
+typedef TLista * lista;
 
 /*O parãmetro representao número de elementos do vetor de listas*/
 lista criaLista(int);
