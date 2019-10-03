@@ -48,12 +48,14 @@ void testeDaLista(lista l,int n){
     printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
     for(i=0;i<n;i++){
         in=l->vetor[i]->first;
-        printf("\n==================");
+        printf("\n==================\n");
+        printf("%d: ",i);
+         if(in==NULL)
+            printf("nulo");
         while(in!=NULL){
-            printf("\n%d",in->info);
+            printf("%d ",in->info);
             in=in->next;
         }
-        printf("\n==================");
     }
     printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
 }

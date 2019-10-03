@@ -9,9 +9,8 @@ typedef struct{
 retornando o ponteiro*/
 FILE* abrirArquivo();
 
-/*Realiza a leirura do número de blocos e dos comandos que serão utilizados e então
-os salva no arquivo comandos.txt*/
-int lerComandos();
+/*Pega os comandos presentes no arquivo fornecido e os executa chamando as funções
+de movimentação de blocos*/
+void executarComandosDoArquivo();
 
-void executarComandosDoArquivo(lista);
 #endif // ARQUIVO_H_INCLUDED

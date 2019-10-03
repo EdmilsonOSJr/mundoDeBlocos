@@ -23,5 +23,7 @@ void pileOnto(int,int,lista);
 monte que contem o bloco b*/
 void pileOver(int,int,lista);
 
+int pesquisaBloco(TNodo*,int,lista);
+
 
 #endif // MOVIMENTACAODOBLOCO_H_INCLUDED
