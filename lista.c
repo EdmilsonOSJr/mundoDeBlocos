@@ -3,7 +3,6 @@
 #include "lista.h"
 
 lista criaLista(int n){
-
     lista l;
     TNodo *p;
 
@@ -48,10 +47,7 @@ void testeDaLista(lista l,int n){
     printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
     for(i=0;i<n;i++){
         in=l->vetor[i]->first;
-        printf("\n==================\n");
-        printf("%d: ",i);
-         if(in==NULL)
-            printf("nulo");
+        printf("\n%d: ",i);
         while(in!=NULL){
             printf("%d ",in->info);
             in=in->next;

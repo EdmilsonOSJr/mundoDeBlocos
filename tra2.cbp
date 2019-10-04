@@ -46,6 +46,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="movimentacaoDoBloco.h" />
+		<Unit filename="pesquisaNaLista.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="pesquisaNaLista.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

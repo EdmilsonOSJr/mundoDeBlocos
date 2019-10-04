@@ -24,13 +24,13 @@ typedef struct{
 
 typedef TLista * lista;
 
-/*O parãmetro representao número de elementos do vetor de listas*/
+/*Recebe uma variável int que representa o tamanho do vetor de listas e aloca dinamicamente as regiões de memória para cada um*/
 lista criaLista(int);
 
 /*libera todos as alocações feitas nas posições do vetor, depois o vetor de Tindice e por fim a lista*/
 void liberaLista(lista);
 
-/*IMprme td que está na lista*/
+/*Imprime tudo que está na lista*/
 void testeDaLista(lista,int);
 
 #endif // LISTA_H_INCLUDED

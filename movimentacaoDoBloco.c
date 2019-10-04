@@ -1,70 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lista.h"
-
-/*void posicaoOriginal(int posicaoAtual,lista l){
-    TIndice *posA,*posO;
-    TNodo *p,*ant;
-    int posOriginal;
-
-    if(l->vetor[posicaoAtual]->first!=NULL){
-        posA=l->vetor[posicaoAtual];
-
-        do{
-            p=posA->first;
-            ant=p;
-            while(p!=posA->last){
-                ant=p;
-                p=p->next;
-            }
-
-            if(p!=ant){
-            //printf("\nteste: %d",posA->last->info);
-                ant->next=NULL;
-                posA->last=ant;
-                posA->nElementos--;
-
-                posOriginal=p->info;
-
-                posO=l->vetor[posOriginal];
-
-                posO->first=p;
-                posO->last=p;
-                posO->nElementos++;
-                posO->last->next=NULL;
-            }
-
-        }while(p->info!=posicaoAtual);
-    }
-    else
-        printf("\nnulo");
-}*/
-
-int pesquisaBloco(TNodo ** bloco,int nBloco,lista l){
-    int i;
-
-    for(i=0;i<l->tamanho;i++){
-        (*bloco)=l->vetor[i]->first;
-
-        while((*bloco)!=NULL){
-            if((*bloco)->info==nBloco){
-                //printf("%d",(*bloco)->info);
-                return i;
-            }
-            //printf("\n%d",(*bloco)->info);
-            (*bloco)=(*bloco)->next;
-        }
-    }
-    return 0;
-}
+#include "pesquisaNaLista.h"
 
 void posicaoOriginal(int numeroDoBloco,lista l){
     TNodo *bloco,*blocoSeguinte;
     TIndice *listaA,*listaO;
-    int indiceOriginal,indiceAtual;
+    int indiceOriginal;
 
-    indiceAtual=pesquisaBloco(&bloco,numeroDoBloco,l);
-    listaA=l->vetor[indiceAtual];
+    bloco=pesquisaBloco(numeroDoBloco,l);
+    listaA=pesquisaLista(numeroDoBloco,l);
+
+    //listaA=l->vetor[indiceAtual];
 
     if(bloco->next!=NULL){
         do{
@@ -81,9 +28,7 @@ void posicaoOriginal(int numeroDoBloco,lista l){
 
             indiceOriginal=blocoSeguinte->info;
             listaO=l->vetor[indiceOriginal];
-            printf("\nA lista de destino: %d",listaO->info);
             if(listaO->first==NULL){
-                printf("\nNula");
                 listaO->first=blocoSeguinte;
                 listaO->last=blocoSeguinte;
                 listaO->last->next=NULL;
@@ -91,7 +36,6 @@ void posicaoOriginal(int numeroDoBloco,lista l){
             else{
                 blocoSeguinte->next=listaO->first;
                 listaO->first=blocoSeguinte;
-                printf("\nNão nula");
             }
 
         }while(bloco->next!=NULL);
@@ -100,11 +44,11 @@ void posicaoOriginal(int numeroDoBloco,lista l){
 
 void posicaoNova(int numeroDoBlocoA,int numeroDoBlocoB,lista l){
     TIndice *listaA,*listaN;
-    TNodo *blocoA,*blocoAnteriorDeA,*blocoB;
-    int indiceAtual,indiceNovo;
+    TNodo *blocoA,*blocoAnteriorDeA;
 
-    indiceAtual=pesquisaBloco(&blocoA,numeroDoBlocoA,l);
-    listaA=l->vetor[indiceAtual];
+    blocoA=pesquisaBloco(numeroDoBlocoA,l);
+    listaA=pesquisaLista(numeroDoBlocoA,l);
+
     //printf("\nlista: %d",blocoA->info);
     do{
         blocoAnteriorDeA=listaA->first;
@@ -113,7 +57,7 @@ void posicaoNova(int numeroDoBlocoA,int numeroDoBlocoB,lista l){
                 blocoAnteriorDeA=blocoAnteriorDeA->next;
             }
         }
-        printf("\n%d",blocoAnteriorDeA->info);
+        //printf("\n%d",blocoAnteriorDeA->info);
 
         if(blocoAnteriorDeA==blocoA){
             if(listaA->first->next==NULL){
@@ -124,9 +68,8 @@ void posicaoNova(int numeroDoBlocoA,int numeroDoBlocoB,lista l){
             else{
                 do{
                     listaA->first=listaA->first->next;
-                    indiceNovo=pesquisaBloco(&blocoB,numeroDoBlocoB,l);
 
-                    listaN=l->vetor[indiceNovo];
+                    listaN=pesquisaLista(numeroDoBlocoB,l);
 
                     blocoA->next=NULL;
                     listaN->last->next=blocoA;
@@ -137,16 +80,14 @@ void posicaoNova(int numeroDoBlocoA,int numeroDoBlocoB,lista l){
                 }while(blocoAnteriorDeA!=NULL);
                 break;
             }
-            indiceNovo=pesquisaBloco(&blocoB,numeroDoBlocoB,l);
 
-            listaN=l->vetor[indiceNovo];
+            listaN=pesquisaLista(numeroDoBlocoB,l);
 
             blocoA->next=NULL;
             listaN->last->next=blocoA;
             listaN->last=blocoA;
 
             blocoA=listaA->first;
-            printf("\nEntrou aqui");
         }
         else{
             if(blocoA==listaA->last){
@@ -159,10 +100,7 @@ void posicaoNova(int numeroDoBlocoA,int numeroDoBlocoB,lista l){
             }
 
 
-
-            indiceNovo=pesquisaBloco(&blocoB,numeroDoBlocoB,l);
-
-            listaN=l->vetor[indiceNovo];
+            listaN=pesquisaLista(numeroDoBlocoB,l);
 
             blocoA->next=NULL;
             listaN->last->next=blocoA;
@@ -173,7 +111,6 @@ void posicaoNova(int numeroDoBlocoA,int numeroDoBlocoB,lista l){
     }while(blocoAnteriorDeA->next!=NULL);
 
 }
-
 
 void moveOnto(int a,int b,lista l){
 

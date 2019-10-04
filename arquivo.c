@@ -4,74 +4,92 @@
 #include "arquivo.h"
 #include "lista.h"
 #include "movimentacaoDoBloco.h"
+#include "pesquisaNaLista.h"
 #define tam 20
 
 FILE* abrirArquivo(){
     FILE *arq;
+
     arq = fopen("comandos.txt", "r+");
     if(arq==NULL)
-        arq = fopen("comandos.txt", "w+");
+        arq = NULL;
     return arq;
 }
 
-void executarComandosDoArquivo(){
-    FILE *arq;
-    lista l;
-    TNodo *b;
-    TComandos a;
-    char comando[tam];
-    int lista1,lista2;
+void GravaNoArqDeSaida(lista l){
+    FILE *saida;
+    TNodo *blocoPercorriddo;
+    int i;
 
-    arq=abrirArquivo();
+    saida = fopen("saida.txt", "w+");
 
-    while(strcmp(fgets(comando, tam, arq),"quit\n")!=0){
-        printf("%s", comando);
-        if(atoi(comando)!=0){
-            strcpy(a.tamanho,comando);
-            l=criaLista(atoi(a.tamanho));
+    for(i=0;i<l->tamanho;i++){
+        blocoPercorriddo=l->vetor[i]->first;
+        fprintf(saida,"\n%d: ",i);
+        while(blocoPercorriddo!=NULL){
+            fprintf(saida,"%d ",blocoPercorriddo->info);
+            blocoPercorriddo=blocoPercorriddo->next;
         }
-        else{
-            strcpy(a.comando1,strtok(comando," "));
-            strcpy(a.elemento1,strtok(NULL," "));
-            strcpy(a.comando2,strtok(NULL," "));
-            strcpy(a.elemento2,strtok(NULL," "));
-            lista1=pesquisaBloco(&b,atoi(a.elemento1),l);
-            lista2=pesquisaBloco(&b,atoi(a.elemento2),l);
+    }
 
-            if(atoi(a.elemento1)!=atoi(a.elemento2)){
-                if(  lista1 != lista2 ){
-                        if(strcmp(a.comando1,"move")==0){
-                            if(strcmp(a.comando2,"onto")==0){
-                                moveOnto(atoi(a.elemento1),atoi(a.elemento2),l);
-                            }
-                            else
-                                moveOver(atoi(a.elemento1),atoi(a.elemento2),l);
+    fclose(saida);
+}
 
-                        }
-                        else{
-                            if(strcmp(a.comando1,"pile")==0){
-                                if(strcmp(a.comando2,"onto")==0){
-                                    pileOnto(atoi(a.elemento1),atoi(a.elemento2),l);
+void executarComandosDoArquivo(){
+    FILE *entrada;
+    lista l;
+    TComandos c;
+    char comando[tam];
+    TIndice *lista1,*lista2;
+
+    entrada=abrirArquivo();
+    if(entrada==NULL)
+        printf("\nArquivo de entrada inexistente");
+    else{
+
+        while(strcmp(fgets(comando, tam, entrada),"quit\n")!=0){
+            printf("%s", comando);
+            if(atoi(comando)!=0){
+                strcpy(c.tamanho,comando);
+                l=criaLista(atoi(c.tamanho));
+            }
+            else{
+                strcpy(c.comando1,strtok(comando," "));
+                strcpy(c.elemento1,strtok(NULL," "));
+                strcpy(c.comando2,strtok(NULL," "));
+                strcpy(c.elemento2,strtok(NULL," "));
+                lista1=pesquisaLista(atoi(c.elemento1),l);
+                lista2=pesquisaLista(atoi(c.elemento2),l);
+
+                if(atoi(c.elemento1)!=atoi(c.elemento2)){
+                    if(  lista1 != lista2 ){
+                            if(strcmp(c.comando1,"move")==0){
+                                if(strcmp(c.comando2,"onto")==0){
+                                    moveOnto(atoi(c.elemento1),atoi(c.elemento2),l);
                                 }
                                 else
-                                    pileOver(atoi(a.elemento1),atoi(a.elemento2),l);
-                            }
-                        }
+                                    moveOver(atoi(c.elemento1),atoi(c.elemento2),l);
 
-                        printf("\nTamanho: %s",a.tamanho);
-                        printf("\nElemento 1: %s",a.elemento1);
-                        printf("\nComando 1: %s",a.comando1);
-                        printf("\nComando 2: %s",a.comando2);
-                        printf("\nElemento 2: %s",a.elemento2);
-                        testeDaLista(l,atoi(a.tamanho));
+                            }
+                            else{
+                                if(strcmp(c.comando1,"pile")==0){
+                                    if(strcmp(c.comando2,"onto")==0){
+                                        pileOnto(atoi(c.elemento1),atoi(c.elemento2),l);
+                                    }
+                                    else
+                                        pileOver(atoi(c.elemento1),atoi(c.elemento2),l);
+                                }
+                            }
+
+                            testeDaLista(l,atoi(c.tamanho));
+                    }
                 }
             }
+
         }
 
-
+        fclose(entrada);
+        GravaNoArqDeSaida(l);
+        liberaLista(l);
     }
-    fclose(arq);
-    liberaLista(l);
-
-
 }
