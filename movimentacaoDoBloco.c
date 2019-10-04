@@ -42,10 +42,8 @@
 
 int pesquisaBloco(TNodo ** bloco,int nBloco,lista l){
     int i;
-    TIndice *lis;
 
     for(i=0;i<l->tamanho;i++){
-        lis=l->vetor[i];
         (*bloco)=l->vetor[i]->first;
 
         while((*bloco)!=NULL){
@@ -57,6 +55,7 @@ int pesquisaBloco(TNodo ** bloco,int nBloco,lista l){
             (*bloco)=(*bloco)->next;
         }
     }
+    return 0;
 }
 
 void posicaoOriginal(int numeroDoBloco,lista l){

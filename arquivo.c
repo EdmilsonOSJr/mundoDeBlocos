@@ -24,7 +24,7 @@ void executarComandosDoArquivo(){
 
     arq=abrirArquivo();
 
-    while(strcmp(fgets(comando, tam, arq),"quit")!=0){
+    while(strcmp(fgets(comando, tam, arq),"quit\n")!=0){
         printf("%s", comando);
         if(atoi(comando)!=0){
             strcpy(a.tamanho,comando);
