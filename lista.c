@@ -2,6 +2,25 @@
 #include <stdlib.h>
 #include "lista.h"
 
+void GravaListaNoArqDeSaida(char *arqSaida,lista l){
+    FILE *saida;
+    TNodo *blocoPercorriddo;
+    int i;
+
+    saida = fopen(arqSaida, "w+");
+
+    for(i=0;i<l->tamanho;i++){
+        blocoPercorriddo=l->vetor[i]->first;
+        fprintf(saida,"\n%d: ",i);
+        while(blocoPercorriddo!=NULL){
+            fprintf(saida,"%d ",blocoPercorriddo->info);
+            blocoPercorriddo=blocoPercorriddo->next;
+        }
+    }
+
+    fclose(saida);
+}
+
 lista criaLista(int n){
     lista l;
     TNodo *p;

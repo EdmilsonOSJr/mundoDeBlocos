@@ -12,9 +12,6 @@ FILE* abrirArquivo(char*);
 /*Pega um comando por vez do arquivo de entrada e chama as função correspondente à movimentação que esse comando representa*/
 void executarComandosDoArquivo(char*,char*);
 
-/*Grava no arquivo de saída a situação final da distribuição dos blocos após as movimentações*/
-void GravaNoArqDeSaida(char*,lista);
-
 int verificacaExtencao(char **,char*,char*);
 
 

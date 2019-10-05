@@ -33,4 +33,8 @@ void liberaLista(lista);
 /*Imprime tudo que está na lista*/
 void testeDaLista(lista,int);
 
+
+/*Grava no arquivo de saída a situação final da distribuição dos blocos após as movimentações*/
+void GravaListaNoArqDeSaida(char*,lista);
+
 #endif // LISTA_H_INCLUDED
