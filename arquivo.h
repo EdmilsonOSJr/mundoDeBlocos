@@ -7,12 +7,15 @@ typedef struct{
 }TComandos;
 
 /*Essa função cria um ponteiro para um arquivo e abre o aquivo comandos.txt,retornando o ponteiro*/
-FILE* abrirArquivo();
+FILE* abrirArquivo(char*);
 
 /*Pega um comando por vez do arquivo de entrada e chama as função correspondente à movimentação que esse comando representa*/
-void executarComandosDoArquivo();
+void executarComandosDoArquivo(char*,char*);
 
 /*Grava no arquivo de saída a situação final da distribuição dos blocos após as movimentações*/
-void GravaNoArqDeSaida();
+void GravaNoArqDeSaida(char*,lista);
+
+int verificacaExtencao(char **,char*,char*);
+
 
 #endif // ARQUIVO_H_INCLUDED

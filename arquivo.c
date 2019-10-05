@@ -7,21 +7,32 @@
 #include "pesquisaNaLista.h"
 #define tam 20
 
-FILE* abrirArquivo(){
+int verificacaExtencao(char ** comando,char *entrada,char *saida){
+
+    if(strstr(comando[1],".txt")!=NULL  && strstr(comando[1],".txt")!=NULL){
+        strcpy(entrada,comando[1]);
+        strcpy(saida,comando[2]);
+        return 1;
+    }
+    else
+        return 0;
+}
+
+FILE* abrirArquivo(char *arqEntrada){
     FILE *arq;
 
-    arq = fopen("comandos.txt", "r+");
+    arq = fopen(arqEntrada, "r+");
     if(arq==NULL)
         arq = NULL;
     return arq;
 }
 
-void GravaNoArqDeSaida(lista l){
+void GravaNoArqDeSaida(char *arqSaida,lista l){
     FILE *saida;
     TNodo *blocoPercorriddo;
     int i;
 
-    saida = fopen("saida.txt", "w+");
+    saida = fopen(arqSaida, "w+");
 
     for(i=0;i<l->tamanho;i++){
         blocoPercorriddo=l->vetor[i]->first;
@@ -35,14 +46,14 @@ void GravaNoArqDeSaida(lista l){
     fclose(saida);
 }
 
-void executarComandosDoArquivo(){
+void executarComandosDoArquivo(char *arqEntrada,char *saida){
     FILE *entrada;
     lista l;
     TComandos c;
     char comando[tam];
     TIndice *lista1,*lista2;
 
-    entrada=abrirArquivo();
+    entrada=abrirArquivo(arqEntrada);
     if(entrada==NULL)
         printf("\nArquivo de entrada inexistente");
     else{
@@ -89,7 +100,7 @@ void executarComandosDoArquivo(){
         }
 
         fclose(entrada);
-        GravaNoArqDeSaida(l);
+        GravaNoArqDeSaida(saida,l);
         liberaLista(l);
     }
 }
