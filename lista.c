@@ -11,11 +11,12 @@ void GravaListaNoArqDeSaida(char *arqSaida,lista l){
 
     for(i=0;i<l->tamanho;i++){
         blocoPercorriddo=l->vetor[i]->first;
-        fprintf(saida,"\n%d: ",i);
+        fprintf(saida,"%d: ",i);
         while(blocoPercorriddo!=NULL){
             fprintf(saida,"%d ",blocoPercorriddo->info);
             blocoPercorriddo=blocoPercorriddo->next;
         }
+        fprintf(saida,"\n");
     }
 
     fclose(saida);
@@ -73,11 +74,12 @@ void testeDaLista(lista l,int n){
     printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
     for(i=0;i<n;i++){
         in=l->vetor[i]->first;
-        printf("\n%d: ",i);
+        printf("%d: ",i);
         while(in!=NULL){
             printf("%d ",in->info);
             in=in->next;
         }
+        printf("\n");
     }
     printf("\n\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
 }
