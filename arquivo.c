@@ -40,7 +40,7 @@ void executarComandosDoArquivo(char *arqEntrada,char *saida){
     else{
 
         while(strcmp(fgets(comando, tam, entrada),"quit\n")!=0){
-            printf("%s", comando);
+            //printf("%s", comando);
             if(atoi(comando)!=0){
                 strcpy(c.tamanho,comando);
                 l=criaLista(atoi(c.tamanho));
@@ -73,13 +73,13 @@ void executarComandosDoArquivo(char *arqEntrada,char *saida){
                                 }
                             }
 
-                            testeDaLista(l,atoi(c.tamanho));
                     }
                 }
             }
 
         }
-
+        printf("\nSituação após movimentações");
+        testeDaLista(l,atoi(c.tamanho));
         fclose(entrada);
         GravaListaNoArqDeSaida(saida,l);
         liberaLista(l);

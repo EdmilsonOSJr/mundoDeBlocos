@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1570627194 source:/home/edmilson/Downloads/mundoDeBlocos-master/arquivo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arquivo.h"
+	"lista.h"
+	"movimentacaoDoBloco.h"
+	"pesquisaNaLista.h"
+
+1570292905 /home/edmilson/Downloads/mundoDeBlocos-master/arquivo.h
+
+1570292905 /home/edmilson/Downloads/mundoDeBlocos-master/lista.h
+
+1570292905 /home/edmilson/Downloads/mundoDeBlocos-master/movimentacaoDoBloco.h
+
+1570292905 /home/edmilson/Downloads/mundoDeBlocos-master/pesquisaNaLista.h
+
+1570292905 source:/home/edmilson/Downloads/mundoDeBlocos-master/lista.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
+1570626816 source:/home/edmilson/Downloads/mundoDeBlocos-master/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arquivo.h"
+	"lista.h"
+	"locale.h"
+
+1570292905 source:/home/edmilson/Downloads/mundoDeBlocos-master/movimentacaoDoBloco.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+	"pesquisaNaLista.h"
+
+1570292905 source:/home/edmilson/Downloads/mundoDeBlocos-master/pesquisaNaLista.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
