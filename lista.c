@@ -50,8 +50,15 @@ lista criaLista(int n){
 
 void liberaLista(lista l){
     int i;
+    TNodo *aux,*p;
 
     for(i=0;i<l->tamanho;i++){
+        p=l->vetor[i]->first;
+        while(p!=NULL){
+            aux=p;
+            p=p->next;
+            free(aux);
+        }
         free(l->vetor[i]);
     }
 

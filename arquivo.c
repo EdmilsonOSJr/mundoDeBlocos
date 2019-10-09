@@ -39,8 +39,10 @@ void executarComandosDoArquivo(char *arqEntrada,char *saida){
         printf("\nArquivo de entrada inexistente");
     else{
 
-        while(strcmp(fgets(comando, tam, entrada),"quit\n")!=0){
+        while((strcmp(fgets(comando, tam, entrada),"quit\n")!=0)){
             //printf("%s", comando);
+            if(strcmp(comando,"quit\n")==0 || strcmp(comando,"quit")==0)
+                break;
             if(atoi(comando)!=0){
                 strcpy(c.tamanho,comando);
                 l=criaLista(atoi(c.tamanho));
@@ -76,6 +78,7 @@ void executarComandosDoArquivo(char *arqEntrada,char *saida){
                     }
                 }
             }
+            //testeDaLista(l,atoi(c.tamanho));
 
         }
         printf("\nSituação após movimentações");
