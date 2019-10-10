@@ -38,7 +38,6 @@ lista criaLista(int n){
 
         l->vetor[i]=(TIndice*)malloc(sizeof(TIndice));
         p=(TNodo*)malloc(sizeof(TNodo));
-        l->vetor[i]->nElementos=1;
         l->vetor[i]->first=p;
         l->vetor[i]->last=p;
         l->vetor[i]->info=i;
