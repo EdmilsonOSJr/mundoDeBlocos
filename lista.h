@@ -12,7 +12,6 @@ typedef struct TNodo{
 typedef struct{
     int info;
     TNodo *first,*last;
-    int nElementos;
 }TIndice;
 
 

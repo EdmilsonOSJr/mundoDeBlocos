@@ -24,8 +24,6 @@ void posicaoOriginal(int numeroDoBloco,lista l){
             else
                 bloco->next=blocoSeguinte->next;
 
-            listaA->nElementos--;
-
             indiceOriginal=blocoSeguinte->info;
             listaO=l->vetor[indiceOriginal];
             if(listaO->first==NULL){
@@ -63,7 +61,6 @@ void posicaoNova(int numeroDoBlocoA,int numeroDoBlocoB,lista l){
             if(listaA->first->next==NULL){
                 listaA->first=NULL;
                 listaA->last=NULL;
-                listaA->nElementos--;
             }
             else{
                 do{
