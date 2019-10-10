@@ -22,8 +22,6 @@ FILE* abrirArquivo(char *arqEntrada){
     FILE *arq;
 
     arq = fopen(arqEntrada, "r+");
-    if(arq==NULL)
-        arq = NULL;
     return arq;
 }
 
